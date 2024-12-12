@@ -1,0 +1,12 @@
+.container {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  button {
+    background-color: #007bff;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+  

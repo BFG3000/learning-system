@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h2>Exam Questions</h2>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Question Text</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of examQuestions">
+          <td>{{ question.id }}</td>
+          <td>{{ question.questionText }}</td>
+          <td>
+            <a [routerLink]="['/exam-question', question.id]" class="btn btn-sm btn-primary">View</a>
+            <a [routerLink]="['/exam-question/form', question.id]" class="btn btn-sm btn-warning">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/exam-question/form']" class="btn btn-success mt-3">Add New Question</a>
+  </div>
+  

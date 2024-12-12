@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h2>Categories</h2>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ category.description }}</td>
+          <td>
+            <a [routerLink]="['/category', category.id]" class="btn btn-sm btn-primary">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/category/form']" class="btn btn-success mt-3">Create New Category</a>
+  </div>
+  

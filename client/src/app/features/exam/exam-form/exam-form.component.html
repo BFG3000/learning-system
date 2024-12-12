@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h2>{{ isEditMode ? 'Edit' : 'Create' }} Exam</h2>
+    <form [formGroup]="examForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input type="date" id="startDate" formControlName="startDate" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="endDate" class="form-label">End Date</label>
+        <input type="date" id="endDate" formControlName="endDate" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="locationId" class="form-label">Location ID</label>
+        <input type="number" id="locationId" formControlName="locationId" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="examForm.invalid">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+    </form>
+  </div>
+  

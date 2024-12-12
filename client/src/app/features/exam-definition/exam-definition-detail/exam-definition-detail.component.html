@@ -1,0 +1,20 @@
+<div class="container mt-5"0 *ngIf="examDefinition">
+    <h2>Exam Definition Details</h2>
+    <p><strong>ID:</strong> {{ examDefinition.id }}</p>
+    <p><strong>Name:</strong> {{ examDefinition.name }}</p>
+    <p><strong>Category:</strong> {{ examDefinition.category?.name }}</p>
+    <p><strong>Duration:</strong> {{ examDefinition.duration }} mins</p>
+  
+    <div class="mt-4">
+      <h3>Exam Variants</h3>
+      <ul>
+        <li *ngFor="let examVariant of examDefinition.examVariants">
+          {{ examVariant.name }}
+        </li>
+      </ul>
+      <a [routerLink]="['/exam-variant/form']" class="btn btn-success mt-3">Add New Exam Variant</a>
+    </div>
+  
+    <a [routerLink]="['/exam-definition/form']" class="btn btn-warning mt-3">Edit Exam Definition</a>
+  </div>
+  

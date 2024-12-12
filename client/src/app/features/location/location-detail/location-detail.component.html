@@ -1,0 +1,7 @@
+<div class="container mt-5" *ngIf="location">
+    <h2>Location Details</h2>
+    <p><strong>ID:</strong> {{ location.id }}</p>
+    <p><strong>Name:</strong> {{ location.name }}</p>
+    <a [routerLink]="['/location/form']" class="btn btn-warning mt-3">Edit Location</a>
+  </div>
+  

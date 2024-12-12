@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h2>Questions</h2>
+    <table class="table table-bordered mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Marks</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of questions">
+          <td>{{ question.id }}</td>
+          <td>{{ question.name }}</td>
+          <td>{{ question.marks }}</td>
+          <td>
+            <a [routerLink]="['/question', question.id]" class="btn btn-sm btn-info">Details</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

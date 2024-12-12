@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h2>Exam Definitions</h2>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Duration</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let examDefinition of examDefinitions">
+          <td>{{ examDefinition.id }}</td>
+          <td>{{ examDefinition.name }}</td>
+          <td>{{ examDefinition.category?.name }}</td>
+          <td>{{ examDefinition.duration }} mins</td>
+          <td>
+            <a [routerLink]="['/exam-definition', examDefinition.id]" class="btn btn-sm btn-primary">View</a>
+            <a [routerLink]="['/exam-definition/form', examDefinition.id]" class="btn btn-sm btn-warning">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/exam-definition/form']" class="btn btn-success mt-3">Create New Exam Definition</a>
+  </div>
+  

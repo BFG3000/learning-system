@@ -1,0 +1,32 @@
+<div *ngIf="loading | async" class="spinner-overlay">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!(loading | async)">
+  <div class="container mt-5">
+    <h2>Exams</h2>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let exam of exams">
+          <td>{{ exam.id }}</td>
+          <td>{{ exam.name }}</td>
+          <td>{{ exam.startDate }}</td>
+          <td>{{ exam.endDate }}</td>
+          <td>
+            <a [routerLink]="['/exam', exam.id]" class="btn btn-sm btn-primary"
+              >View</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

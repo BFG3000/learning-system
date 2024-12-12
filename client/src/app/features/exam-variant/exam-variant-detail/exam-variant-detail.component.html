@@ -1,0 +1,29 @@
+<div class="container mt-5" *ngIf="examVariant">
+    <h2>Exam Variant Details</h2>
+    <p><strong>ID:</strong> {{ examVariant.id }}</p>
+    <p><strong>Name:</strong> {{ examVariant.name }}</p>
+    <p><strong>Exam Definition:</strong> {{ examVariant.examDefinition?.name }}</p>
+    
+    <div class="mt-4">
+      <h3>Exam Questions</h3>
+      <ul>
+        <li *ngFor="let examQuestion of examVariant.examQuestions">
+          {{ examQuestion.question?.name }}
+        </li>
+      </ul>
+      <a [routerLink]="['/exam-question/form']" class="btn btn-success mt-3">Add New Question</a>
+    </div>
+  
+    <div class="mt-4">
+      <h3>Results</h3>
+      <ul>
+        <li *ngFor="let result of examVariant.results">
+          Score: {{ result.score }} for User ID: {{ result.userExam?.user?.name }}
+        </li>
+      </ul>
+      <a [routerLink]="['/result/form']" class="btn btn-success mt-3">Add New Result</a>
+    </div>
+  
+    <a [routerLink]="['/exam-variant/form']" class="btn btn-warning mt-3">Edit Exam Variant</a>
+  </div>
+  

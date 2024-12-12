@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <h2>Results</h2>
+    <table class="table table-hover mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User Exam ID</th>
+          <th>Score</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results">
+          <td>{{ result.id }}</td>
+          <td>{{ result.userExamId }}</td>
+          <td>{{ result.score }}</td>
+          <td>
+            <a [routerLink]="['/result', result.id]" class="btn btn-sm btn-primary">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h2>Locations</h2>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let location of locations">
+          <td>{{ location.id }}</td>
+          <td>{{ location.name }}</td>
+          <td>
+            <a [routerLink]="['/location', location.id]" class="btn btn-sm btn-primary">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/location/form']" class="btn btn-success mt-3">Create New Location</a>
+  </div>
+  

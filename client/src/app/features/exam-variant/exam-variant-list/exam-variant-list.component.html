@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <h2>Exam Variants</h2>
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Exam Definition</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let examVariant of examVariants">
+          <td>{{ examVariant.id }}</td>
+          <td>{{ examVariant.name }}</td>
+          <td>{{ examVariant.examDefinition?.name }}</td>
+          <td>
+            <a [routerLink]="['/exam-variant', examVariant.id]" class="btn btn-sm btn-primary">View</a>
+            <a [routerLink]="['/exam-variant/form', examVariant.id]" class="btn btn-sm btn-warning">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/exam-variant/form']" class="btn btn-success mt-3">Create New Exam Variant</a>
+  </div>
+  
