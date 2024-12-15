@@ -1,0 +1,77 @@
+<mat-toolbar color="primary">
+  <span>Learning Management</span>
+  <a mat-button [routerLink]="['/exam-definition']" routerLinkActive="active">
+    Exam Definitions
+  </a>
+  <a mat-button [routerLink]="['/exam-variant']" routerLinkActive="active">
+    Exam Variants
+  </a>
+  <a mat-button [routerLink]="['/exam']" routerLinkActive="active"> Exams </a>
+  <a mat-button [routerLink]="['/question']" routerLinkActive="active"> Questions </a>
+  <a mat-button [routerLink]="['/result']" routerLinkActive="active"> Results </a>
+  <a mat-button [routerLink]="['/location']" routerLinkActive="active"> locations </a>
+  <a mat-button routerLink="/login">Login</a>
+  <a mat-button routerLink="/login">Logout</a>
+</mat-toolbar>
+<!-- 
+<mat-toolbar color="primary" class="navbar navbar-default py-2" dir="rtl">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLinkActive="active" routerLink="welcome"
+        ><img src="../../../assets/images/school_white_24dp.svg" alt="" />
+        Learning Management
+      </a>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <ul class="nav navbar-right d-flex align-items-center">
+        <li *ngIf="user?.type == 1" routerLinkActive="active">
+          <a [routerLink]="['/exam-definition']" routerLinkActive="active">
+            Exam Definitions
+          </a>
+        </li>
+        <li *ngIf="user?.type == 1" routerLinkActive="active">
+          <a [routerLink]="['/exam-variant']" routerLinkActive="active">
+             Exam Variants
+          </a>
+        </li>
+        <li *ngIf="user" routerLinkActive="active">
+          <a [routerLink]="['/exam']" routerLinkActive="active">
+             Exams
+          </a>
+        </li>
+        <li *ngIf="user" routerLinkActive="active">
+          <a [routerLink]="['/question']" routerLinkActive="active">
+            Questions
+          </a>
+        </li>
+
+        <li *ngIf="user" routerLinkActive="active">
+          <a [routerLink]="['/result']" routerLinkActive="active">
+            Results
+          </a>
+        </li>
+
+        <li *ngIf="user" routerLinkActive="active">
+          <a [routerLink]="['/user']" routerLinkActive="active">
+            users
+          </a>
+        </li>
+
+        <li *ngIf="user" routerLinkActive="active">
+          <a [routerLink]="['/location']" routerLinkActive="active">
+            locations
+          </a>
+        </li>
+
+        <li *ngIf="user" routerLinkActive="active" (click)="logout()">
+          <a routerLink="/login">Logout</a>
+        </li>
+        <li *ngIf="!user" routerLinkActive="active">
+          <a routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="user" class="username">{{ user.name }}</li>
+      </ul>
+    </div>
+  </div>
+</mat-toolbar> -->

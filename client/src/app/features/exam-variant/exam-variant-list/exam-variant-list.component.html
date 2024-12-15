@@ -12,8 +12,8 @@
       <tbody>
         <tr *ngFor="let examVariant of examVariants">
           <td>{{ examVariant.id }}</td>
-          <td>{{ examVariant.name }}</td>
-          <td>{{ examVariant.examDefinition?.name }}</td>
+          <td>{{ examVariant.variantName }}</td>
+          <td>{{ examVariant.examDefinition?.examDefinitionName }}</td>
           <td>
             <a [routerLink]="['/exam-variant', examVariant.id]" class="btn btn-sm btn-primary">View</a>
             <a [routerLink]="['/exam-variant/form', examVariant.id]" class="btn btn-sm btn-warning">Edit</a>

@@ -1,20 +1,103 @@
-<div class="container mt-5"0 *ngIf="examDefinition">
-    <h2>Exam Definition Details</h2>
-    <p><strong>ID:</strong> {{ examDefinition.id }}</p>
-    <p><strong>Name:</strong> {{ examDefinition.name }}</p>
-    <p><strong>Category:</strong> {{ examDefinition.category?.name }}</p>
-    <p><strong>Duration:</strong> {{ examDefinition.duration }} mins</p>
-  
-    <div class="mt-4">
-      <h3>Exam Variants</h3>
-      <ul>
-        <li *ngFor="let examVariant of examDefinition.examVariants">
-          {{ examVariant.name }}
-        </li>
-      </ul>
-      <a [routerLink]="['/exam-variant/form']" class="btn btn-success mt-3">Add New Exam Variant</a>
-    </div>
-  
-    <a [routerLink]="['/exam-definition/form']" class="btn btn-warning mt-3">Edit Exam Definition</a>
+<div class="container">
+  <!-- Header -->
+  <mat-toolbar color="primary">
+    <span>Exam Definition Details</span>
+    <span class="spacer"></span>
+  </mat-toolbar>
+
+  <!-- Exam Definition Details -->
+  <mat-card class="detail-card">
+    <mat-card-header>
+      <mat-card-title>Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>ID:</strong> {{ examDefinition?.id }}</p>
+      <p><strong>Name:</strong> {{ examDefinition?.examDefinitionName }}</p>
+      <p><strong>Category:</strong> {{ examDefinition?.category?.name }}</p>
+      <p><strong>Duration:</strong> {{ examDefinition?.duration }} mins</p>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Exam Variants Table -->
+  <div class="d-flex mt-4">
+    <h2>Exam Variants</h2>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="createExamVariant()"
+      class="mx-3"
+    >
+      Create Exam Variant
+    </button>
   </div>
-  
+  <table
+    mat-table
+    [dataSource]="examDefinition?.examVariants || []"
+    class="mat-elevation-z8"
+  >
+    <!-- Columns -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.variantName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-button
+          color="primary"
+          (click)="editExamVariant(element.id)"
+        >
+          Edit
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Rows -->
+    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'actions']"></tr>
+  </table>
+
+  <!-- Exams Table -->
+  <div class="d-flex mt-4">
+    <h2>Exams</h2>
+    <button mat-raised-button color="accent" (click)="createExam()" class="mx-3">
+      Create Exam
+    </button>
+  </div>
+  <table
+    mat-table
+    [dataSource]="examDefinition?.exams || []"
+    class="mat-elevation-z8"
+  >
+    <!-- Columns -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button color="primary" (click)="editExam(element.id)">
+          Edit
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Rows -->
+    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'actions']"></tr>
+  </table>
+</div>

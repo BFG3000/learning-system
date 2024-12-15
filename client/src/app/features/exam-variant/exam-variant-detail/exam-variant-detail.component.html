@@ -1,8 +1,8 @@
 <div class="container mt-5" *ngIf="examVariant">
     <h2>Exam Variant Details</h2>
     <p><strong>ID:</strong> {{ examVariant.id }}</p>
-    <p><strong>Name:</strong> {{ examVariant.name }}</p>
-    <p><strong>Exam Definition:</strong> {{ examVariant.examDefinition?.name }}</p>
+    <p><strong>Name:</strong> {{ examVariant.variantName }}</p>
+    <p><strong>Exam Definition:</strong> {{ examVariant.examDefinition?.examDefinitionName }}</p>
     
     <div class="mt-4">
       <h3>Exam Questions</h3>

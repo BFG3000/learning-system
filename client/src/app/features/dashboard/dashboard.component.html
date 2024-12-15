@@ -1,8 +1,49 @@
-<div class="container mt-5">
-  <h2>Dashboard</h2>
-  <div class="list-group mt-4">
-    <a routerLink="/exam" class="list-group-item list-group-item-action">Manage Exams</a>
-    <a routerLink="/question" class="list-group-item list-group-item-action">Manage Questions</a>
-    <a routerLink="/result" class="list-group-item list-group-item-action">View Results</a>
-  </div>
+<div class="dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="App Logo" />
+      <h1>Dashboard</h1>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a [routerLink]="['/exam-definition']" routerLinkActive="active">
+            <i class="icon bi bi-file-text"></i> Exam Definitions
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/exam-variant']" routerLinkActive="active">
+            <i class="icon bi bi-layers"></i> Exam Variants
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/exam']" routerLinkActive="active">
+            <i class="icon bi bi-journal-text"></i> Exams
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/exam-question']" routerLinkActive="active">
+            <i class="icon bi bi-question-circle"></i> Exam Questions
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/result']" routerLinkActive="active">
+            <i class="icon bi bi-bar-chart"></i> Results
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <header class="header">
+      <h2>Welcome to the Dashboard</h2>
+      <button (click)="logout()" class="btn btn-danger">Logout</button>
+    </header>
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
 </div>

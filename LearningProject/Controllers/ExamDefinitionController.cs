@@ -48,31 +48,35 @@ namespace LearningProject.Controllers
 
             return StatusCode(500, "An error occurred while creating the exam.");
         }
-        
+
         // GET: api/ExamDefinition/
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ExamDefinitionDto>>> GetExamDefinitions()
         {
             return await _context.ExamDefinitions
             .Include(e => e.Category)
-            .Include(e=>e.Exams)
-        //    .ThenInclude(e=>e.Location)
-            .Include(e=>e.ExamType)
-            .Include(e=>e.ExamVariants)
-            .Select(e=> new ExamDefinitionDto {
+            .Include(e => e.Exams)
+            //    .ThenInclude(e=>e.Location)
+            .Include(e => e.ExamType)
+            .Include(e => e.ExamVariants)
+            .Select(e => new ExamDefinitionDto
+            {
                 Id = e.Id,
                 ExamDefinitionName = e.Name,
                 Duration = e.Duration,
-                Category = e.Category.Name,
-                ExamType = e.ExamType.Name,
-                Exams = e.Exams.Select(g=> new ExamDto {
+                Category = e.Category,
+                ExamType = e.ExamType,
+                Exams = e.Exams.Select(g => new ExamDto
+                {
                     Id = g.Id,
                     Name = g.Name,
                     StartDate = g.StartDate,
                     EndDate = g.EndDate,
                     Location = g.Location.Name
                 }).ToList(),
-                ExamVariants = e.ExamVariants.Select (v=>new ExamVariantDTO{
+                ExamVariants = e.ExamVariants.Select(v => new ExamVariantDTO
+                {
+                    Id = v.Id,
                     VariantName = v.Name
                 }).ToList()
             }).ToListAsync();
@@ -85,6 +89,27 @@ namespace LearningProject.Controllers
             var examDefinition = await _context.ExamDefinitions
                                              .Include(ed => ed.Exams)
                                              .Include(ed => ed.ExamVariants)
+                                             .Select(e => new ExamDefinitionDto
+                                             {
+                                                 Id = e.Id,
+                                                 ExamDefinitionName = e.Name,
+                                                 Duration = e.Duration,
+                                                 Category = e.Category,
+                                                 ExamType = e.ExamType,
+                                                 Exams = e.Exams.Select(g => new ExamDto
+                                                 {
+                                                     Id = g.Id,
+                                                     Name = g.Name,
+                                                     StartDate = g.StartDate,
+                                                     EndDate = g.EndDate,
+                                                     Location = g.Location.Name
+                                                 }).ToList(),
+                                                 ExamVariants = e.ExamVariants.Select(v => new ExamVariantDTO
+                                                 {
+                                                     Id = v.Id,
+                                                     VariantName = v.Name
+                                                 }).ToList()
+                                             })
                                              .FirstOrDefaultAsync(ed => ed.Id == id);
 
             if (examDefinition == null)

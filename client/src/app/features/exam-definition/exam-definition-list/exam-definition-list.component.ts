@@ -17,6 +17,7 @@ export class ExamDefinitionListComponent {
 
   ngOnInit(): void {
     this.examDefinitionService.getExamDefinitions().subscribe((data) => {
+      console.log('data: ',data)
       this.examDefinitions = data;
     });
   }

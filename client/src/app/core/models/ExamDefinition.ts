@@ -5,10 +5,10 @@ import { ExamVariant } from "./ExamVariant";
 
 export interface ExamDefinition {
     id: number;
-    name?: string | null;
-    categoryId: number;
+    examDefinitionName?: string | null;
+    categoryId?: number;
     duration: number;
-    examTypeId: number;
+    examTypeId?: number;
     examType?: ExamType | null;
     examVariants?: ExamVariant[] | null;
     exams?: Exam[] | null;

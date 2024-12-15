@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Login } from '../../app/core/models/Login';
 import { environment } from '../../environments/environment';
 
@@ -9,13 +9,19 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = `${environment.apiUrl}/Auth`;
+  private loginUrl = `${environment.apiUrl}/Auth/login`; // Update this to match your API endpoint
+  private http = inject(HttpClient);
+  private router = inject(Router);
+  private isAuthenticated = new BehaviorSubject<boolean>(this.hasToken());
   private tokenKey = 'auth_token';
 
-  constructor(private http: HttpClient, private router: Router) {}
-
-  login(credentials: Login): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+  login(credentials: { username: string; password: string }): Observable<void> {
+    return this.http.post<{ token: string }>(this.loginUrl, credentials).pipe(
+      map((response) => {
+        localStorage.setItem(this.tokenKey, response.token); // Store the token securely
+        this.isAuthenticated.next(true); // Notify subscribers
+      })
+    );
   }
 
   logout(): void {
@@ -31,9 +37,12 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey); // Retrieve the token from localStorage
   }
 
-  isAuthenticated(): boolean {
-    const token = this.getToken();
-    return !!token; // Check if there’s a valid token
+  isLoggedIn(): Observable<boolean> {
+    return this.isAuthenticated.asObservable();
+  }
+
+  private hasToken(): boolean {
+    return !!localStorage.getItem('auth_token');
   }
 
   isTokenExpired(): boolean {

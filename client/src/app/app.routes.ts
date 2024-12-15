@@ -26,39 +26,55 @@ import { ExamDefinitionFormComponent } from './features/exam-definition/exam-def
 import { ExamDefinitionDetailComponent } from './features/exam-definition/exam-definition-detail/exam-definition-detail.component';
 import { ExamDefinitionListComponent } from './features/exam-definition/exam-definition-list/exam-definition-list.component';
 import { ExamQuestionFormComponent } from './features/exam-question/exam-question-form/exam-question-form.component';
+import { ExamQuestionListComponent } from './features/exam-question/exam-question-list/exam-question-list.component';
+import { ExamDefinitionCompleteFormComponent } from './features/exam-definition/exam-definition-complete-form/exam-definition-complete-form.component';
 
 // Define routes
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-
+  
   {
     path: '',
-    component: DashboardComponent,
+    // component: DashboardComponent,
     canActivate: [authGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'exam', component: ExamListComponent },
-      { path: 'exam/:id', component: ExamDetailComponent },
       { path: 'exam/form', component: ExamFormComponent },
+      { path: 'exam/form/:id', component: ExamFormComponent },
+      { path: 'exam/:id', component: ExamDetailComponent },
+      
       { path: 'question', component: QuestionListComponent },
-      { path: 'question/:id', component: QuestionDetailComponent },
       { path: 'question/form', component: QuestionFormComponent },
+      { path: 'question/form/:id', component: QuestionFormComponent },
+      { path: 'question/:id', component: QuestionDetailComponent },
+      
       { path: 'result', component: ResultListComponent },
-      { path: 'result/:userExamId', component: ResultDetailComponent },
       { path: 'result/form', component: ResultFormComponent },
+      { path: 'result/form/:id', component: ResultFormComponent },
+      { path: 'result/:userExamId', component: ResultDetailComponent },
+
       { path: 'user', component: UserListComponent },
-      { path: 'user/:id', component: UserDetailComponent },
       { path: 'user/form', component: UserFormComponent },
+      { path: 'user/:id', component: UserDetailComponent },
+      
       { path: 'location', component: LocationListComponent },
-      { path: 'location/:id', component: LocationDetailComponent },
       { path: 'location/form', component: LocationFormComponent },
+      { path: 'location/form/:id', component: LocationFormComponent },
+      { path: 'location/:id', component: LocationDetailComponent },
+
       { path: 'exam-definition', component: ExamDefinitionListComponent },
-      { path: 'exam-definition/:id', component: ExamDefinitionDetailComponent },
       { path: 'exam-definition/form', component: ExamDefinitionFormComponent },
+      { path: 'exam-definition/form/:id', component: ExamDefinitionFormComponent },
+      { path: 'exam-definition/create-all', component: ExamDefinitionCompleteFormComponent },
+      { path: 'exam-definition/:id', component: ExamDefinitionDetailComponent },
+
       { path: 'exam-variant', component: ExamVariantListComponent },
-      { path: 'exam-variant/:id', component: ExamVariantDetailComponent },
       { path: 'exam-variant/form', component: ExamVariantFormComponent },
-      // { path: 'exam-question', component: ExamQuestionListComponentnt },
+      { path: 'exam-variant/form/:id', component: ExamVariantFormComponent },
+      { path: 'exam-variant/:id', component: ExamVariantDetailComponent },
+      
+      { path: 'exam-question', component: ExamQuestionListComponent },
       { path: 'exam-question/form', component: ExamQuestionFormComponent },
     ],
   },

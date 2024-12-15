@@ -6,11 +6,12 @@ import { httpErrorInterceptor } from './core/interceptors/http-error.interceptor
 
 
 import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor,httpErrorInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor,httpErrorInterceptor])), provideAnimationsAsync(),
 
   ]
 };

@@ -28,6 +28,12 @@ namespace LearningProject.Controllers
                                  .ToListAsync();
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ExamVariant>>> GetExamTypes()
+        {
+            return await _context.ExamVariants.ToListAsync();
+        }
+
         [HttpPost]
         public async Task<ActionResult<ExamVariant>> PostExamVariant(ExamVariant examVariant)
         {

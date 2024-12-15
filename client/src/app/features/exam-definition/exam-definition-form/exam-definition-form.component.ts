@@ -7,13 +7,14 @@ import { CategoryService } from '../../category/category.service';
 import { ExamDefinition } from '../../../core/models/ExamDefinition';
 import { ExamType } from '../../../core/models/ExamType';
 import { Category } from '../../../core/models/Category';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-exam-definition-form',
   templateUrl: './exam-definition-form.component.html',
   styleUrls: ['./exam-definition-form.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule], // Import Reactive Forms
+  imports: [ReactiveFormsModule,CommonModule], // Import Reactive Forms
 })
 export class ExamDefinitionFormComponent {
   examDefinitionForm: FormGroup;
